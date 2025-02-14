@@ -628,6 +628,41 @@ export interface ApiMerchMerch extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiVisitorVisitor extends Struct.CollectionTypeSchema {
+  collectionName: 'visitors';
+  info: {
+    displayName: 'Visitor';
+    pluralName: 'visitors';
+    singularName: 'visitor';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    address: Schema.Attribute.String;
+    birth: Schema.Attribute.String;
+    bonus: Schema.Attribute.Integer;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::visitor.visitor'
+    > &
+      Schema.Attribute.Private;
+    moderated: Schema.Attribute.Boolean;
+    name: Schema.Attribute.String;
+    patronymic: Schema.Attribute.String;
+    phone: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    surname: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1145,6 +1180,7 @@ declare module '@strapi/strapi' {
       'api::food-category.food-category': ApiFoodCategoryFoodCategory;
       'api::food.food': ApiFoodFood;
       'api::merch.merch': ApiMerchMerch;
+      'api::visitor.visitor': ApiVisitorVisitor;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
