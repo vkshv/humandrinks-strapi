@@ -631,6 +631,7 @@ export interface ApiMerchMerch extends Struct.CollectionTypeSchema {
 export interface ApiVisitorVisitor extends Struct.CollectionTypeSchema {
   collectionName: 'visitors';
   info: {
+    description: '';
     displayName: 'Visitor';
     pluralName: 'visitors';
     singularName: 'visitor';
@@ -657,6 +658,7 @@ export interface ApiVisitorVisitor extends Struct.CollectionTypeSchema {
     phone: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     surname: Schema.Attribute.String;
+    telegramId: Schema.Attribute.BigInteger;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
