@@ -505,6 +505,7 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
   attributes: {
     almostFull: Schema.Attribute.Boolean;
     bonusPayment: Schema.Attribute.Boolean;
+    bonusPrice: Schema.Attribute.Integer;
     category: Schema.Attribute.Relation<
       'manyToOne',
       'api::event-category.event-category'
@@ -602,6 +603,7 @@ export interface ApiFoodFood extends Struct.CollectionTypeSchema {
 export interface ApiMerchMerch extends Struct.CollectionTypeSchema {
   collectionName: 'merches';
   info: {
+    description: '';
     displayName: 'Merch';
     pluralName: 'merches';
     singularName: 'merch';
@@ -610,6 +612,7 @@ export interface ApiMerchMerch extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    bonusPrice: Schema.Attribute.Integer;
     count: Schema.Attribute.Integer;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -643,6 +646,7 @@ export interface ApiVisitorVisitor extends Struct.CollectionTypeSchema {
     address: Schema.Attribute.String;
     birth: Schema.Attribute.String;
     bonus: Schema.Attribute.Integer;
+    cardNumber: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

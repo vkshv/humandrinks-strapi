@@ -4,7 +4,8 @@
   "info": {
     "singularName": "merch",
     "pluralName": "merches",
-    "displayName": "Merch"
+    "displayName": "Merch",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -24,14 +25,18 @@
       "type": "integer"
     },
     "picture": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "bonusPrice": {
+      "type": "integer"
     }
   }
 }

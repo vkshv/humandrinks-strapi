@@ -49,6 +49,9 @@
     },
     "time": {
       "type": "string"
+    },
+    "bonusPrice": {
+      "type": "integer"
     }
   }
 }

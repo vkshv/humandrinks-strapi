@@ -38,6 +38,9 @@
     },
     "telegramId": {
       "type": "biginteger"
+    },
+    "cardNumber": {
+      "type": "string"
     }
   }
 }
