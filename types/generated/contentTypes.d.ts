@@ -631,6 +631,31 @@ export interface ApiMerchMerch extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiPromoPromo extends Struct.SingleTypeSchema {
+  collectionName: 'promos';
+  info: {
+    displayName: 'Promo';
+    pluralName: 'promos';
+    singularName: 'promo';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::promo.promo'> &
+      Schema.Attribute.Private;
+    Promocodes: Schema.Attribute.JSON;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiVisitorVisitor extends Struct.CollectionTypeSchema {
   collectionName: 'visitors';
   info: {
@@ -1186,6 +1211,7 @@ declare module '@strapi/strapi' {
       'api::food-category.food-category': ApiFoodCategoryFoodCategory;
       'api::food.food': ApiFoodFood;
       'api::merch.merch': ApiMerchMerch;
+      'api::promo.promo': ApiPromoPromo;
       'api::visitor.visitor': ApiVisitorVisitor;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
