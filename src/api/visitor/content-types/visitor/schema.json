@@ -41,6 +41,9 @@
     },
     "cardNumber": {
       "type": "string"
+    },
+    "redeemedPromocodes": {
+      "type": "json"
     }
   }
 }

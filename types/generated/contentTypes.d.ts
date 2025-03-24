@@ -686,6 +686,7 @@ export interface ApiVisitorVisitor extends Struct.CollectionTypeSchema {
     patronymic: Schema.Attribute.String;
     phone: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    redeemedPromocodes: Schema.Attribute.JSON;
     surname: Schema.Attribute.String;
     telegramId: Schema.Attribute.BigInteger;
     updatedAt: Schema.Attribute.DateTime;
