@@ -19,6 +19,12 @@
       "relation": "oneToMany",
       "target": "api::food.food",
       "mappedBy": "category"
+    },
+    "food_subcategories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::food-subcategory.food-subcategory",
+      "mappedBy": "food_category"
     }
   }
 }

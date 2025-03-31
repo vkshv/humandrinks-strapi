@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "food_subcategories",
+  "info": {
+    "singularName": "food-subcategory",
+    "pluralName": "food-subcategories",
+    "displayName": "Food Subcategory",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "food_category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::food-category.food-category",
+      "inversedBy": "food_subcategories"
+    },
+    "foods": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::food.food",
+      "mappedBy": "food_subcategory"
+    }
+  }
+}

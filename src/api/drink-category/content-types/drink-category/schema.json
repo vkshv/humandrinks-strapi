@@ -19,6 +19,12 @@
       "relation": "oneToMany",
       "target": "api::drink.drink",
       "mappedBy": "category"
+    },
+    "drink_subcategories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::drink-subcategory.drink-subcategory",
+      "mappedBy": "drink_category"
     }
   }
 }

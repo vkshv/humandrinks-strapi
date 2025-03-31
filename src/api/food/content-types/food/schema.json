@@ -61,6 +61,15 @@
       "relation": "manyToOne",
       "target": "api::food-category.food-category",
       "inversedBy": "foods"
+    },
+    "food_subcategory": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::food-subcategory.food-subcategory",
+      "inversedBy": "foods"
+    },
+    "weight": {
+      "type": "integer"
     }
   }
 }

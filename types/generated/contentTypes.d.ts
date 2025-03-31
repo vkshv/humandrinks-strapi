@@ -410,6 +410,10 @@ export interface ApiDrinkCategoryDrinkCategory
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    drink_subcategories: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::drink-subcategory.drink-subcategory'
+    >;
     drinks: Schema.Attribute.Relation<'oneToMany', 'api::drink.drink'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -418,6 +422,39 @@ export interface ApiDrinkCategoryDrinkCategory
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiDrinkSubcategoryDrinkSubcategory
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'drink_subcategories';
+  info: {
+    displayName: 'Drink Subcategory';
+    pluralName: 'drink-subcategories';
+    singularName: 'drink-subcategory';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    drink_category: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::drink-category.drink-category'
+    >;
+    drinks: Schema.Attribute.Relation<'oneToMany', 'api::drink.drink'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::drink-subcategory.drink-subcategory'
+    > &
+      Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -446,6 +483,10 @@ export interface ApiDrinkDrink extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.String;
+    drink_subcategory: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::drink-subcategory.drink-subcategory'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::drink.drink'> &
       Schema.Attribute.Private;
@@ -458,6 +499,7 @@ export interface ApiDrinkDrink extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    volume: Schema.Attribute.Integer;
   };
 }
 
@@ -544,6 +586,10 @@ export interface ApiFoodCategoryFoodCategory
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    food_subcategories: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::food-subcategory.food-subcategory'
+    >;
     foods: Schema.Attribute.Relation<'oneToMany', 'api::food.food'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -552,6 +598,40 @@ export interface ApiFoodCategoryFoodCategory
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiFoodSubcategoryFoodSubcategory
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'food_subcategories';
+  info: {
+    description: '';
+    displayName: 'Food Subcategory';
+    pluralName: 'food-subcategories';
+    singularName: 'food-subcategory';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    food_category: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::food-category.food-category'
+    >;
+    foods: Schema.Attribute.Relation<'oneToMany', 'api::food.food'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::food-subcategory.food-subcategory'
+    > &
+      Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -582,6 +662,10 @@ export interface ApiFoodFood extends Struct.CollectionTypeSchema {
     description: Schema.Attribute.String;
     energyValue: Schema.Attribute.Integer;
     fats: Schema.Attribute.Decimal;
+    food_subcategory: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::food-subcategory.food-subcategory'
+    >;
     ingredients: Schema.Attribute.JSON;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::food.food'> &
@@ -597,6 +681,7 @@ export interface ApiFoodFood extends Struct.CollectionTypeSchema {
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     vegan: Schema.Attribute.Boolean;
+    weight: Schema.Attribute.Integer;
   };
 }
 
@@ -1206,10 +1291,12 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::admin.admin': ApiAdminAdmin;
       'api::drink-category.drink-category': ApiDrinkCategoryDrinkCategory;
+      'api::drink-subcategory.drink-subcategory': ApiDrinkSubcategoryDrinkSubcategory;
       'api::drink.drink': ApiDrinkDrink;
       'api::event-category.event-category': ApiEventCategoryEventCategory;
       'api::event.event': ApiEventEvent;
       'api::food-category.food-category': ApiFoodCategoryFoodCategory;
+      'api::food-subcategory.food-subcategory': ApiFoodSubcategoryFoodSubcategory;
       'api::food.food': ApiFoodFood;
       'api::merch.merch': ApiMerchMerch;
       'api::promo.promo': ApiPromoPromo;
