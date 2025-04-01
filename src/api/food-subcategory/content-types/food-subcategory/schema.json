@@ -23,6 +23,9 @@
       "relation": "oneToMany",
       "target": "api::food.food",
       "mappedBy": "food_subcategory"
+    },
+    "name": {
+      "type": "string"
     }
   }
 }

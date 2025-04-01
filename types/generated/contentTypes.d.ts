@@ -433,6 +433,7 @@ export interface ApiDrinkSubcategoryDrinkSubcategory
   extends Struct.CollectionTypeSchema {
   collectionName: 'drink_subcategories';
   info: {
+    description: '';
     displayName: 'Drink Subcategory';
     pluralName: 'drink-subcategories';
     singularName: 'drink-subcategory';
@@ -455,6 +456,7 @@ export interface ApiDrinkSubcategoryDrinkSubcategory
       'api::drink-subcategory.drink-subcategory'
     > &
       Schema.Attribute.Private;
+    name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -632,6 +634,7 @@ export interface ApiFoodSubcategoryFoodSubcategory
       'api::food-subcategory.food-subcategory'
     > &
       Schema.Attribute.Private;
+    name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
