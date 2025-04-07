@@ -31,6 +31,10 @@ jobs:
         run: |
           npm install
 
+      - name: Copy .env file
+        run: |
+          scp ${{ secrets.SSH_PRIVATE_KEY }} ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/etc/envs/strapi.env /var/www/humandrinks-strapi/
+
       - name: Build Strapi app
         run: |
           npm run build
