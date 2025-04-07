@@ -33,7 +33,11 @@ jobs:
 
       - name: Copy .env file
         run: |
-          scp ${{ secrets.SSH_PRIVATE_KEY }} ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/etc/envs/strapi.env /var/www/humandrinks-strapi/
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          scp -i ~/.ssh/id_rsa /etc/envs/strapi.env ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/var/www/humandrinks-strapi/.env
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Build Strapi app
         run: |
