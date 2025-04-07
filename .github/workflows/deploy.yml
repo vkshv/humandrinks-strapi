@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up SSH key
         run: |
@@ -36,17 +36,18 @@ jobs:
       - name: Deploy to server
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
+            set -e
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            nvm use 20
+            nvm use 20 || { echo "NVM or Node.js 20 not found, aborting"; exit 1; }
 
-            pm2 delete strapi
+            pm2 delete strapi || echo "No existing pm2 process to delete"
             cd /var/www/humandrinks-strapi
-            git pull origin dev
+            git pull origin dev || { echo "Git pull failed, aborting"; exit 1; }
             export NODE_OPTIONS="--max-old-space-size=2048"
-            NODE_ENV=production npm install
-            NODE_ENV=production npm run build
-            pm2 start ecosystem.config.js --env production
+            NODE_ENV=production npm install || { echo "npm install failed, aborting"; exit 1; }
+            NODE_ENV=production npm run build || { echo "npm run build failed, aborting"; exit 1; }
+            pm2 start ecosystem.config.js --env production || { echo "pm2 start failed, aborting"; exit 1; }
           EOF
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
