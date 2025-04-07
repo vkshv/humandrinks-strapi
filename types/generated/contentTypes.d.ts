@@ -433,7 +433,6 @@ export interface ApiDrinkSubcategoryDrinkSubcategory
   extends Struct.CollectionTypeSchema {
   collectionName: 'drink_subcategories';
   info: {
-    description: '';
     displayName: 'Drink Subcategory';
     pluralName: 'drink-subcategories';
     singularName: 'drink-subcategory';
@@ -497,6 +496,7 @@ export interface ApiDrinkDrink extends Struct.CollectionTypeSchema {
     price: Schema.Attribute.Integer;
     priceBottle: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
+    sort_weight: Schema.Attribute.BigInteger;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -611,7 +611,6 @@ export interface ApiFoodSubcategoryFoodSubcategory
   extends Struct.CollectionTypeSchema {
   collectionName: 'food_subcategories';
   info: {
-    description: '';
     displayName: 'Food Subcategory';
     pluralName: 'food-subcategories';
     singularName: 'food-subcategory';
@@ -678,6 +677,7 @@ export interface ApiFoodFood extends Struct.CollectionTypeSchema {
     price: Schema.Attribute.Integer;
     proteins: Schema.Attribute.Decimal;
     publishedAt: Schema.Attribute.DateTime;
+    sort_weight: Schema.Attribute.BigInteger;
     spicy: Schema.Attribute.Boolean;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -712,6 +712,7 @@ export interface ApiMerchMerch extends Struct.CollectionTypeSchema {
     picture: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     price: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
+    sort_weight: Schema.Attribute.BigInteger;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -777,6 +778,37 @@ export interface ApiVisitorVisitor extends Struct.CollectionTypeSchema {
     redeemedPromocodes: Schema.Attribute.JSON;
     surname: Schema.Attribute.String;
     telegramId: Schema.Attribute.BigInteger;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiWhatsNewWhatsNew extends Struct.CollectionTypeSchema {
+  collectionName: 'whats_news';
+  info: {
+    description: '';
+    displayName: 'Whats new';
+    pluralName: 'whats-news';
+    singularName: 'whats-new';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::whats-new.whats-new'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    text: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1304,6 +1336,7 @@ declare module '@strapi/strapi' {
       'api::merch.merch': ApiMerchMerch;
       'api::promo.promo': ApiPromoPromo;
       'api::visitor.visitor': ApiVisitorVisitor;
+      'api::whats-new.whats-new': ApiWhatsNewWhatsNew;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

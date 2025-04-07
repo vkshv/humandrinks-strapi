@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "whats_news",
+  "info": {
+    "singularName": "whats-new",
+    "pluralName": "whats-news",
+    "displayName": "Whats new",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "date": {
+      "type": "string"
+    }
+  }
+}

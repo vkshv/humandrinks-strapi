@@ -37,6 +37,9 @@
     },
     "bonusPrice": {
       "type": "integer"
+    },
+    "sort_weight": {
+      "type": "biginteger"
     }
   }
 }

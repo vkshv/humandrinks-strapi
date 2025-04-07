@@ -47,14 +47,17 @@
     "country": {
       "type": "string"
     },
+    "volume": {
+      "type": "integer"
+    },
     "drink_subcategory": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::drink-subcategory.drink-subcategory",
       "inversedBy": "drinks"
     },
-    "volume": {
-      "type": "integer"
+    "sort_weight": {
+      "type": "biginteger"
     }
   }
 }
