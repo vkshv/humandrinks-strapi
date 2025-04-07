@@ -40,11 +40,11 @@ jobs:
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             nvm use 20
 
-            cd /var/www/humandrinks-strapi
             pm2 delete strapi
+            cd /var/www/humandrinks-strapi
             git pull origin dev
-            NODE_ENV=production npm install
             export NODE_OPTIONS="--max-old-space-size=2048"
+            NODE_ENV=production npm install
             NODE_ENV=production npm run build
             pm2 start ecosystem.config.js --env production
           EOF
