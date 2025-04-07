@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: 'strapi',
-      script: './node_modules/.bin/strapi',
+      script: 'npm',
       args: 'start',
       cwd: '/var/www/humandrinks-strapi',
       env: {
