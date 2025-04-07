@@ -41,7 +41,7 @@ jobs:
             nvm use 20
 
             cd /var/www/humandrinks-strapi
-            pm2 stop strapi
+            pm2 delete strapi
             git pull origin dev
             NODE_ENV=production npm install
             export NODE_OPTIONS="--max-old-space-size=2048"

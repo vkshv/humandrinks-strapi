@@ -6,6 +6,9 @@ module.exports = {
       args: 'start',
       cwd: '/var/www/humandrinks-strapi',
       env: {
+        NODE_ENV: 'development',
+      },
+      env_production: {
         NODE_ENV: 'production',
       },
     },
