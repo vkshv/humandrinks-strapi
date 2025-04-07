@@ -33,9 +33,12 @@ jobs:
 
       - name: Copy .env file
         run: |
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          scp -i ~/.ssh/id_rsa /etc/envs/strapi.env ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/var/www/humandrinks-strapi/.env
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
+            # Создаем пустой файл .env в нужной директории
+            touch /var/www/humandrinks-strapi/.env
+            # Копируем содержимое из /etc/envs/strapi.env в .env
+            cat /etc/envs/strapi.env > /var/www/humandrinks-strapi/.env
+          EOF
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
