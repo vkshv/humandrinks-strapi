@@ -472,7 +472,7 @@ export interface ApiDrinkDrink extends Struct.CollectionTypeSchema {
     singularName: 'drink';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     category: Schema.Attribute.Relation<
@@ -650,7 +650,7 @@ export interface ApiFoodFood extends Struct.CollectionTypeSchema {
     singularName: 'food';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     carbohydrates: Schema.Attribute.Decimal;
@@ -697,7 +697,7 @@ export interface ApiMerchMerch extends Struct.CollectionTypeSchema {
     singularName: 'merch';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     bonusPrice: Schema.Attribute.Integer;
@@ -754,7 +754,7 @@ export interface ApiVisitorVisitor extends Struct.CollectionTypeSchema {
     singularName: 'visitor';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     address: Schema.Attribute.String;
@@ -793,7 +793,7 @@ export interface ApiWhatsNewWhatsNew extends Struct.CollectionTypeSchema {
     singularName: 'whats-new';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
