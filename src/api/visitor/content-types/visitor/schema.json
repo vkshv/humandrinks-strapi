@@ -44,6 +44,9 @@
     },
     "redeemedPromocodes": {
       "type": "json"
+    },
+    "utm_source": {
+      "type": "string"
     }
   }
 }
