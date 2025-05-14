@@ -745,6 +745,31 @@ export interface ApiPromoPromo extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiUtmUtm extends Struct.SingleTypeSchema {
+  collectionName: 'utms';
+  info: {
+    displayName: 'UTM';
+    pluralName: 'utms';
+    singularName: 'utm';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::utm.utm'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Statistics: Schema.Attribute.JSON;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiVisitorVisitor extends Struct.CollectionTypeSchema {
   collectionName: 'visitors';
   info: {
@@ -1335,6 +1360,7 @@ declare module '@strapi/strapi' {
       'api::food.food': ApiFoodFood;
       'api::merch.merch': ApiMerchMerch;
       'api::promo.promo': ApiPromoPromo;
+      'api::utm.utm': ApiUtmUtm;
       'api::visitor.visitor': ApiVisitorVisitor;
       'api::whats-new.whats-new': ApiWhatsNewWhatsNew;
       'plugin::content-releases.release': PluginContentReleasesRelease;

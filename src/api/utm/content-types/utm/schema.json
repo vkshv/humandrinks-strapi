@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "utms",
+  "info": {
+    "singularName": "utm",
+    "pluralName": "utms",
+    "displayName": "UTM"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Statistics": {
+      "type": "json"
+    }
+  }
+}
