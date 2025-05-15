@@ -12,7 +12,7 @@ export default factories.createCoreController('api::utm.utm', ({ strapi }) => ({
       return ctx.badRequest('Missing or invalid "source" in request body.');
     }
 
-    const utmEntry = await strapi.entityService.findOne('api::utm.utm', 1);
+    const utmEntry = await strapi.entityService.findMany('api::utm.utm', {});
 
     if (!utmEntry) {
       return ctx.badRequest('UTM entry not found. Please create it in the admin panel.');
@@ -23,7 +23,7 @@ export default factories.createCoreController('api::utm.utm', ({ strapi }) => ({
     const currentValue = statistics[source] || 0;
     statistics[source] = currentValue + 1;
 
-    const updatedEntry = await strapi.entityService.update('api::utm.utm', 1, {
+    const updatedEntry = await strapi.entityService.update('api::utm.utm', utmEntry.id, {
       data: { Statistics: statistics },
     });
 
