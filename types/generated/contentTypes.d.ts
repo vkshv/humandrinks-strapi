@@ -753,7 +753,7 @@ export interface ApiUtmUtm extends Struct.SingleTypeSchema {
     singularName: 'utm';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
