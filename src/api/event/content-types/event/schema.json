@@ -52,6 +52,9 @@
     },
     "bonusPrice": {
       "type": "integer"
+    },
+    "isFull": {
+      "type": "boolean"
     }
   }
 }
