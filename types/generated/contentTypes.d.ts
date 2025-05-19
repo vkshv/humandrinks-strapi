@@ -746,6 +746,55 @@ export interface ApiPromoPromo extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiReferralProgramReferralProgram
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'referral_programs';
+  info: {
+    description: '';
+    displayName: 'Referral Program';
+    pluralName: 'referral-programs';
+    singularName: 'referral-program';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::referral-program.referral-program'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    referral_bonus_type: Schema.Attribute.Enumeration<
+      ['EXTRA_BONUS', 'COMPLIMENTARY_MENU']
+    >;
+    referral_bonus_value: Schema.Attribute.String;
+    referral_description: Schema.Attribute.String;
+    referral_picture: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    referral_title: Schema.Attribute.String;
+    referrer_bonus_type: Schema.Attribute.Enumeration<
+      ['EXTRA_BONUS', 'COMPLIMENTARY_MENU']
+    >;
+    referrer_bonus_value: Schema.Attribute.String;
+    referrer_description: Schema.Attribute.String;
+    referrer_picture: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    referrer_title: Schema.Attribute.String;
+    slug: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiUtmUtm extends Struct.SingleTypeSchema {
   collectionName: 'utms';
   info: {
@@ -1362,6 +1411,7 @@ declare module '@strapi/strapi' {
       'api::food.food': ApiFoodFood;
       'api::merch.merch': ApiMerchMerch;
       'api::promo.promo': ApiPromoPromo;
+      'api::referral-program.referral-program': ApiReferralProgramReferralProgram;
       'api::utm.utm': ApiUtmUtm;
       'api::visitor.visitor': ApiVisitorVisitor;
       'api::whats-new.whats-new': ApiWhatsNewWhatsNew;

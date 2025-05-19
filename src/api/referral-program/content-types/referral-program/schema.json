@@ -1,0 +1,75 @@
+{
+  "kind": "collectionType",
+  "collectionName": "referral_programs",
+  "info": {
+    "singularName": "referral-program",
+    "pluralName": "referral-programs",
+    "displayName": "Referral Program",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "referrer_title": {
+      "type": "string"
+    },
+    "referrer_description": {
+      "type": "string"
+    },
+    "referrer_picture": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "referrer_bonus_type": {
+      "type": "enumeration",
+      "enum": [
+        "EXTRA_BONUS",
+        "COMPLIMENTARY_MENU"
+      ]
+    },
+    "referrer_bonus_value": {
+      "type": "string"
+    },
+    "referral_title": {
+      "type": "string"
+    },
+    "referral_description": {
+      "type": "string"
+    },
+    "referral_picture": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "referral_bonus_type": {
+      "type": "enumeration",
+      "enum": [
+        "EXTRA_BONUS",
+        "COMPLIMENTARY_MENU"
+      ]
+    },
+    "referral_bonus_value": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    }
+  }
+}
