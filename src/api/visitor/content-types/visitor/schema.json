@@ -47,6 +47,9 @@
     },
     "utm_source": {
       "type": "string"
+    },
+    "referralProgram": {
+      "type": "json"
     }
   }
 }
