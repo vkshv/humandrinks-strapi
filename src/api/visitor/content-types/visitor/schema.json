@@ -50,6 +50,9 @@
     },
     "referralProgram": {
       "type": "json"
+    },
+    "isAdmin": {
+      "type": "boolean"
     }
   }
 }
