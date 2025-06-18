@@ -16,7 +16,7 @@
       "type": "string"
     },
     "description": {
-      "type": "string"
+      "type": "text"
     },
     "date": {
       "type": "string"
