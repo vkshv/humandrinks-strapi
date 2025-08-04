@@ -53,6 +53,9 @@
     },
     "isAdmin": {
       "type": "boolean"
+    },
+    "isPersonalDataConsented": {
+      "type": "boolean"
     }
   }
 }
